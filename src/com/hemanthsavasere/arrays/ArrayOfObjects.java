@@ -59,7 +59,6 @@ class Polynomial {
     public Polynomial addPolynomial(Polynomial p2) {
         Polynomial res = new Polynomial(this.arr.length + p2.arr.length);
         int i = 0, j = 0, k = 0;
-
         while (i < this.arr.length && j < p2.arr.length) {
             if (this.arr[i].power == p2.arr[j].power) {
                 res.arr[k].power = this.arr[i].power;
@@ -67,13 +66,12 @@ class Polynomial {
                 i++;
                 j++;
                 k++;
-            } else if (this.arr[i].power > p2.arr[i].power) {
+            } else if (this.arr[i].power > p2.arr[j].power) {
                 res.arr[k].power = this.arr[i].power;
                 res.arr[k].coefficient = this.arr[i].coefficient;
                 i++;
                 k++;
-            }
-            else if (this.arr[i].power < p2.arr[i].power){
+            } else if (this.arr[i].power < p2.arr[j].power) {
                 res.arr[k].power = p2.arr[j].power;
                 res.arr[k].coefficient = p2.arr[j].coefficient;
                 j++;
@@ -92,7 +90,24 @@ class Polynomial {
             k++;
             j++;
         }
+        return res;
+    }
 
+    public Polynomial multiplyPolynomial(Polynomial p2) {
+        Polynomial res = new Polynomial(this.arr.length * p2.arr.length);
+        Monomial term = new Monomial();
+        int max = Math.max(this.arr.length, p2.arr.length);
+        for (int j = 0; j < p2.arr.length; j++) {
+            term = p2.arr[j];
+            Polynomial temp = new Polynomial(max);
+            int k = 0;
+            for (int i = 0; i < this.arr.length; i++) {
+                temp.arr[k].power = this.arr[i].power + term.power;
+                temp.arr[k].coefficient = this.arr[i].coefficient * term.coefficient;
+                k++;
+            }
+            res = res.addPolynomial(temp);
+        }
         return res;
     }
 }
@@ -107,9 +122,12 @@ public class ArrayOfObjects {
 
 
         Polynomial res = p2.addPolynomial(p1);
+        Polynomial res2 = p2.multiplyPolynomial(p1);
         p1.showPolynomial();
         p2.showPolynomial();
         res.showPolynomial();
+        res2.showPolynomial();
+
     }
 }
 
