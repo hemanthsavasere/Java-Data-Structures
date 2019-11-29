@@ -12,7 +12,6 @@ class Node {
 
 public class LinkedList {
     Node head;
-
     void insert(int n, int k) {
         if (head == null) {
             head = new Node();
