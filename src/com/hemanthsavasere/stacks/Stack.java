@@ -5,24 +5,25 @@ import java.util.ArrayList;
 public class Stack {
     ArrayList<Integer> arr;
 
-    public Stack(){
+    public Stack() {
         arr = new ArrayList<>();
     }
 
-    void push(int n){
-        arr.add(n);
+    void push(int n) {
+        arr.add(0, n);
     }
 
-    int pop(){
+    int pop() {
+        if (arr.size() == 0)
+            System.out.println("Cannot pop element from stack");
         return arr.remove(0);
     }
 
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < arr.size(); i++){
-            sb.append(String.valueOf(arr.get(i)));
-            sb.append(" ");
+        for (int i = 0; i < arr.size(); i++) {
+            sb.append(arr.get(i)).append(" ");
         }
         return sb.toString();
     }
@@ -34,6 +35,7 @@ public class Stack {
         s1.push(30);
         System.out.println(s1);
         s1.pop();
+        System.out.println(s1);
         s1.pop();
         System.out.println(s1);
     }
