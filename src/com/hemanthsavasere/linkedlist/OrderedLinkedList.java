@@ -3,6 +3,15 @@ package com.hemanthsavasere.linkedlist;
 public class OrderedLinkedList {
     Node head;
 
+    /**
+     *
+     * @param n
+     * 1. Traversing through LinkedList to find the position to insert as we have to maintain order
+     * 2. Inserting based on 3 conditions
+     *      1. At front
+     *      2. At end
+     *      3. At middle
+     */
     void insert(int n) {
         if (head == null) {
             head = new Node();
@@ -26,7 +35,7 @@ public class OrderedLinkedList {
                 head = inserting;
             } else if (temp == null) {  // when inserting node at end
                 prev.next = inserting;
-            } else {
+            } else { // inserting at middle
                 prev.next = inserting;
                 inserting.next = temp;
             }
@@ -34,7 +43,15 @@ public class OrderedLinkedList {
 
     }
 
-
+    /**
+     * @param key
+     * 1. Traversing through LinkedList to find the position to insert as we have to maintain order
+     * 2. Inserting based on 3 conditions
+     *      1. At front
+     *      2. At end
+     *      3. At middle
+     * @return integer
+     */
     int delete(int key) {
         int ret = -1;
         if (head == null) {
@@ -50,11 +67,11 @@ public class OrderedLinkedList {
                 temp = temp.next;
             }
             ret = temp.data;
-            if(prev == null){  // deleting the hed node
+            if(prev == null){  // deleting the node at front
                 head = temp.next;
                 temp.next = null;
             }
-            else{
+            else{ //deleting the node at end or middle
                 prev.next = temp.next;
             }
         }
