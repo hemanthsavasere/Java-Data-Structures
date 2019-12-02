@@ -49,11 +49,14 @@ public class DoublyLinkedList {
                 prev = temp;
                 temp = temp.next;
             }
-            if (prev == null) {
+            if (prev == null) { // while deleting at the starting of the node
                 head = temp.next;
                 temp.next = null;
-            } else if (temp != null) {
+            } else if (temp != null) {  // inserting at end or inserting at the middle
                 prev.next = temp.next;
+            }
+            else{
+                System.out.println("Key not found " + n);
             }
         }
     }
@@ -80,6 +83,7 @@ public class DoublyLinkedList {
         list.insert(0);
         System.out.println(list);
         list.delete(30);
+        list.delete(70);
         list.delete(60);
         System.out.println(list);
     }
