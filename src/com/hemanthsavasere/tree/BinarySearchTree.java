@@ -70,9 +70,11 @@ public class BinarySearchTree {
                 q = cur.right;
             }
 
-            if (cur == parent.left)
+            if (parent == null)
+                root = q;
+            else if (cur == parent.left)
                 parent.left = q;
-            else if(cur == parent.right)
+            else if (cur == parent.right)
                 parent.right = q;
         }
     }
@@ -143,12 +145,12 @@ public class BinarySearchTree {
         bst.root = new Node();
         bst.root.data = 10;
 
-        bst.insert(20);
-        bst.insert(5);
-        bst.insert(0);
-        bst.insert(100);
-        bst.insert(-10);
-        bst.insert(2);
+//        bst.insert(20);
+//        bst.insert(5);
+//        bst.insert(0);
+//        bst.insert(100);
+//        bst.insert(-10);
+//        bst.insert(2);
 
         bst.display(bst.root, 0);
         System.out.println("No. of nodes are " + bst.countNodes(bst.root));
@@ -158,17 +160,21 @@ public class BinarySearchTree {
         System.out.println();
         System.out.println();
 
-        bst.delete(2);
+        bst.delete(10);
         bst.display(bst.root, 0);
 
-        System.out.println();
-        System.out.println();
 
-        bst.delete(0);
-        bst.display(bst.root, 0);
-
-        bst.delete(-999);
-        bst.display(bst.root, 0);
+//        bst.delete(2);
+//        bst.display(bst.root, 0);
+//
+//        System.out.println();
+//        System.out.println();
+//
+//        bst.delete(0);
+//        bst.display(bst.root, 0);
+//
+//        bst.delete(-999);
+//        bst.display(bst.root, 0);
 
 
         BinarySearchTree treeCopy = new BinarySearchTree();
