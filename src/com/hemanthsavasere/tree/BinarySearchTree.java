@@ -171,11 +171,11 @@ public class BinarySearchTree {
         bst.display(bst.root, 0);
 
 
-//        BinarySearchTree treeCopy = new BinarySearchTree();
-//        treeCopy.root = copy(bst.root);
-//        treeCopy.display(treeCopy.root, 0);
-//
-//        System.out.println(compareTrees(bst.root, treeCopy.root));
+        BinarySearchTree treeCopy = new BinarySearchTree();
+        treeCopy.root = copy(bst.root);
+        treeCopy.display(treeCopy.root, 0);
+
+        System.out.println(compareTrees(bst.root, treeCopy.root));
 
     }
 }
